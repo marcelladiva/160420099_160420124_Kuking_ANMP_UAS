@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/itemDoctor">
+
+    <fragment
+        android:id="@+id/itemDoctor"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DoctorListFragment"
+        android:label="fragment_doctor_list"
+        tools:layout="@layout/fragment_doctor_list" >
+        <action
+            android:id="@+id/actionDoctorDetail"
+            app:destination="@id/doctorPracticeScheduleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorPracticeScheduleFragment"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DoctorPracticeScheduleFragment"
+        android:label="fragment_doctor_practice_schedule"
+        tools:layout="@layout/fragment_doctor_practice_schedule" >
+        <argument
+            android:name="doctorID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemEvent"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.EventListFragment"
+        android:label="fragment_event_list"
+        tools:layout="@layout/fragment_event_list" >
+        <action
+            android:id="@+id/actionEventDetail"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/fragment_event_detail" >
+        <argument
+            android:name="eventID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemArticle"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ArticleListFragment"
+        android:label="fragment_article_list"
+        tools:layout="@layout/fragment_article_list" >
+        <action
+            android:id="@+id/actionArticleDetail"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailFragment"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ArticleDetailFragment"
+        android:label="fragment_article_detail"
+        tools:layout="@layout/fragment_article_detail" >
+        <argument
+            android:name="articleID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDrug"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DrugListFragment"
+        android:label="fragment_drug_list"
+        tools:layout="@layout/fragment_drug_list" >
+        <action
+            android:id="@+id/actionDrugDetail"
+            app:destination="@id/drugDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/drugDetailFragment"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DrugDetailFragment"
+        android:label="fragment_drug_detail"
+        tools:layout="@layout/fragment_drug_detail" >
+        <argument
+            android:name="drugID"
+            app:argType="string" />
+    </fragment>
+</navigation>
