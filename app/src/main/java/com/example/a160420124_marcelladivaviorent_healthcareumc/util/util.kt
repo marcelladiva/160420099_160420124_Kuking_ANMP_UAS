@@ -7,9 +7,30 @@ import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.a160420124_marcelladivaviorent_healthcareumc.R
+import com.example.a160420124_marcelladivaviorent_healthcareumc.model.UMCDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+
+val DB_NAME = "umcdb"
+
+fun buildDb(context: Context):UMCDatabase {
+    val db = Room.databaseBuilder(context, UMCDatabase::class.java, DB_NAME).addMigrations(
+        MIGRATION_1_2).build()
+    return db
+}
+
+val MIGRATION_1_2 = object : Migration(1, 2) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE article ('id' TEXT, 'name' TEXT, 'photoUrl' TEXT, 'detail' TEXT,'uuid' INTEGER NOT NULL, PRIMARY KEY('uuid'))")
+    }
+}
+
+
 
 fun ImageView.loadImage(url: String?, progressBar:ProgressBar) {
 
@@ -24,29 +45,6 @@ fun ImageView.loadImage(url: String?, progressBar:ProgressBar) {
             }
         })
 }
-
-//fun showNotification(title:String, content:String, icon:Int) {
-//    val channelId = "${MainActivity.instance?.packageName}-${MainActivity.instance?.getString(R.string.app_name)}"
-//
-//    val notificationBuilder = NotificationCompat.Builder(MainActivity.instance!!.applicationContext, channelId).apply {
-//        setSmallIcon(icon)
-//        setContentTitle(title)
-//        setContentText(content)
-//        setStyle(NotificationCompat.BigTextStyle())
-//        priority = NotificationCompat.PRIORITY_DEFAULT
-//        setAutoCancel(true)
-//    }
-//
-//    val notificationManager = NotificationManagerCompat.from(MainActivity.instance!!.applicationContext.applicationContext!!)
-//    if (ActivityCompat.checkSelfPermission(
-//            MainActivity.instance!!.applicationContext,
-//            Manifest.permission.POST_NOTIFICATIONS
-//        ) != PackageManager.PERMISSION_GRANTED
-//    ) {
-//        return
-//    }
-//    notificationManager.notify(1001, notificationBuilder.build())
-//}
 
 fun createNotificationChannel(context: Context, importance: Int, showBadge: Boolean, name: String, description: String) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

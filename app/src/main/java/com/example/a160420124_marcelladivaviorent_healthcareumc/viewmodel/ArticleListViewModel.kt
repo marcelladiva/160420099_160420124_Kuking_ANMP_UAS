@@ -10,47 +10,31 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Article
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Drug
+import com.example.a160420124_marcelladivaviorent_healthcareumc.util.buildDb
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ArticleListViewModel(application: Application): AndroidViewModel(application) {
+class ArticleListViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
 
-    val articleLD = MutableLiveData<ArrayList<Article>>()
+    val articleLD = MutableLiveData<List<Article>>()
     val articleLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
 
-    fun refresh(){
+    fun refresh() {
         loadingLD.value = true
         articleLoadErrorLD.value = false
+        launch {
+            val db = buildDb(getApplication())
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "https://raw.githubusercontent.com/marcelladiva/160420124_MarcellaDivaViorent_UTS/main/article.json"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                val sType = object : TypeToken<ArrayList<Article>>() { }.type
-                val result = Gson().fromJson<ArrayList<Article>>(it, sType)
-
-                articleLD.value = result
-                loadingLD.value = false
-
-                Log.d("showvoley", result.toString())
-            },
-            {
-                Log.d("volleyerror", it.toString())
-                articleLoadErrorLD.value = true
-                loadingLD.value = false
-            }
-        )
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
+            articleLD.postValue(db.articleDao().selectAllArticle())
+        }
     }
 }

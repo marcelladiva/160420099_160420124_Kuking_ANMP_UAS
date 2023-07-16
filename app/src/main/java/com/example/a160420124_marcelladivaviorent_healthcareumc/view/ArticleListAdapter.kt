@@ -45,7 +45,7 @@ class ArticleListAdapter(val articleList:ArrayList<Article>):RecyclerView.Adapte
         imageViewArticle.loadImage(article.photoUrl, progressBarArticle)
     }
 
-    fun updateArticleList(newArticleList: ArrayList<Article>) {
+    fun updateArticleList(newArticleList: List<Article>) {
         articleList.clear()
         articleList.addAll(newArticleList)
         notifyDataSetChanged()

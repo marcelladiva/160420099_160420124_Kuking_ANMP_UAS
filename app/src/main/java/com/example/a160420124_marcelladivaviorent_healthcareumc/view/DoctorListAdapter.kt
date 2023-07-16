@@ -46,7 +46,7 @@ class DoctorListAdapter(val doctorList:ArrayList<Doctor>):RecyclerView.Adapter<D
         imageViewDoctor.loadImage(doctorList[position].photoUrl, progressBarDoctor)
     }
 
-    fun updateDoctorList(newDoctorList: ArrayList<Doctor>) {
+    fun updateDoctorList(newDoctorList: List<Doctor>) {
         doctorList.clear()
         doctorList.addAll(newDoctorList)
         notifyDataSetChanged()

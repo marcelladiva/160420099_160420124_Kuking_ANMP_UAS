@@ -35,7 +35,7 @@ class ArticleDetailFragment : Fragment() {
         if(arguments != null) {
             val idArticle = ArticleDetailFragmentArgs.fromBundle(requireArguments()).articleID
             articleDetailViewModel = ViewModelProvider(this).get(ArticleDetailViewModel::class.java)
-            articleDetailViewModel.fetch(idArticle)
+            articleDetailViewModel.fetch(idArticle.toInt())
         }
 
         val textJudulArtikel = view.findViewById<TextView>(R.id.textJudulArtikel)

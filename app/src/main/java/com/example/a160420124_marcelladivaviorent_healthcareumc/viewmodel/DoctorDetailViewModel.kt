@@ -4,43 +4,34 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Article
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Doctor
+import com.example.a160420124_marcelladivaviorent_healthcareumc.model.UMCDatabase
+import com.example.a160420124_marcelladivaviorent_healthcareumc.util.buildDb
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class DoctorDetailViewModel(application: Application): AndroidViewModel(application) {
+class DoctorDetailViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
     val doctorLD = MutableLiveData<Doctor>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
 
-    fun fetch(idDoctor : String) {
+    fun fetch(uuid:Int) {
+        launch {
+            val db = buildDb(getApplication())
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "https://raw.githubusercontent.com/marcelladiva/160420124_MarcellaDivaViorent_UTS/main/doctor.json"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                val sType = object : TypeToken<ArrayList<Doctor>>() { }.type
-                val result = Gson().fromJson<ArrayList<Doctor>>(it, sType)
-
-                for(a in result){
-                    if(a.id == idDoctor){
-                        doctorLD.value = a
-                    }
-                }
-                Log.d("showvoley", result.toString())
-            },
-            {
-                Log.d("showvoley", it.toString())
-            })
-
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
+            doctorLD.postValue(db.doctorDao().selectDoctor(uuid))
+        }
     }
 }

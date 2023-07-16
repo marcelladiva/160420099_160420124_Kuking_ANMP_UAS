@@ -33,7 +33,7 @@ class DoctorPracticeScheduleFragment : Fragment() {
         if(arguments != null) {
             val idDoctor = DoctorPracticeScheduleFragmentArgs.fromBundle(requireArguments()).doctorID
             doctorDetailViewModel = ViewModelProvider(this).get(DoctorDetailViewModel::class.java)
-            doctorDetailViewModel.fetch(idDoctor)
+            doctorDetailViewModel.fetch(idDoctor.toInt())
         }
 
         val imageViewDokter = view.findViewById<ImageView>(R.id.imageViewDokter)
@@ -51,7 +51,7 @@ class DoctorPracticeScheduleFragment : Fragment() {
             textJamPraktek.setText(doctorDetail.jam.toString())
             val btnSchedule = view.findViewById<Button>(R.id.btnSchedule)
 
-//            var doctor = doctorDetail
+            var doctor = doctorDetail
 //            btnSchedule.setOnClickListener {
 //                Observable.timer(5, TimeUnit.SECONDS)
 //                    .subscribeOn(Schedulers.io())

@@ -16,7 +16,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.a160420124_marcelladivaviorent_healthcareumc.R
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.DoctorListViewModel
 
-@Suppress("UNREACHABLE_CODE")
 class DoctorListFragment : Fragment() {
 
     private lateinit var viewModel: DoctorListViewModel
@@ -43,17 +42,17 @@ class DoctorListFragment : Fragment() {
 
         observeViewModel()
 
-        val refreshLayoutDoctor = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutDoctor)
-        val txtErrorDoctor = view?.findViewById<TextView>(R.id.txtErrorDoctor)
-        val progressLoadDoctor = view?.findViewById<ProgressBar>(R.id.progressLoadDoctor)
-
-        refreshLayoutDoctor?.setOnRefreshListener {
-            recViewDoctor?.visibility = View.GONE
-            txtErrorDoctor?.visibility = View.GONE
-            progressLoadDoctor?.visibility = View.VISIBLE
-            viewModel.refresh()
-            refreshLayoutDoctor?.isRefreshing = false
-        }
+//        val refreshLayoutDoctor = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutDoctor)
+//        val txtErrorDoctor = view?.findViewById<TextView>(R.id.txtErrorDoctor)
+//        val progressLoadDoctor = view?.findViewById<ProgressBar>(R.id.progressLoadDoctor)
+//
+//        refreshLayoutDoctor?.setOnRefreshListener {
+//            recViewDoctor?.visibility = View.GONE
+//            txtErrorDoctor?.visibility = View.GONE
+//            progressLoadDoctor?.visibility = View.VISIBLE
+//            viewModel.refresh()
+//            refreshLayoutDoctor?.isRefreshing = false
+//        }
     }
 
     fun observeViewModel(){
@@ -64,7 +63,7 @@ class DoctorListFragment : Fragment() {
 
         viewModel.doctorLoadErrorLD.observe(viewLifecycleOwner, Observer {
             val txtErrorDoctor = view?.findViewById<TextView>(R.id.txtErrorDoctor)
-            if(it == true) {
+            if(it == null) {
                 txtErrorDoctor?.visibility = View.VISIBLE
             } else {
                 txtErrorDoctor?.visibility = View.GONE
@@ -74,7 +73,7 @@ class DoctorListFragment : Fragment() {
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             val recViewDoctor = view?.findViewById<RecyclerView>(R.id.recViewDoctor)
             val progressLoadDoctor = view?.findViewById<ProgressBar>(R.id.progressLoadDoctor)
-            if(it == true) {
+            if(it == null) {
                 recViewDoctor?.visibility = View.GONE
                 progressLoadDoctor?.visibility = View.VISIBLE
             } else {

@@ -42,17 +42,17 @@ class ArticleListFragment : Fragment() {
 
         observeViewModel()
 
-        val refreshLayoutArticle = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutArticle)
-        val txtErrorArticle = view?.findViewById<TextView>(R.id.txtErrorArticle)
-        val progressLoadArticle = view?.findViewById<ProgressBar>(R.id.progressLoadArticle)
-
-        refreshLayoutArticle?.setOnRefreshListener {
-            recViewArticle?.visibility = View.GONE
-            txtErrorArticle?.visibility = View.GONE
-            progressLoadArticle?.visibility = View.VISIBLE
-            viewModel.refresh()
-            refreshLayoutArticle?.isRefreshing = false
-        }
+//        val refreshLayoutArticle = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutArticle)
+//        val txtErrorArticle = view?.findViewById<TextView>(R.id.txtErrorArticle)
+//        val progressLoadArticle = view?.findViewById<ProgressBar>(R.id.progressLoadArticle)
+//
+//        refreshLayoutArticle?.setOnRefreshListener {
+//            recViewArticle?.visibility = View.GONE
+//            txtErrorArticle?.visibility = View.GONE
+//            progressLoadArticle?.visibility = View.VISIBLE
+//            viewModel.refresh()
+//            refreshLayoutArticle?.isRefreshing = false
+//        }
     }
 
     fun observeViewModel(){
@@ -63,7 +63,7 @@ class ArticleListFragment : Fragment() {
 
         viewModel.articleLoadErrorLD.observe(viewLifecycleOwner, Observer {
             val txtErrorArticle = view?.findViewById<TextView>(R.id.txtErrorArticle)
-            if(it == true) {
+            if(it == null) {
                 txtErrorArticle?.visibility = View.VISIBLE
             } else {
                 txtErrorArticle?.visibility = View.GONE
@@ -73,7 +73,7 @@ class ArticleListFragment : Fragment() {
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             val recViewArticle = view?.findViewById<RecyclerView>(R.id.recViewArticle)
             val progressLoadArticle = view?.findViewById<ProgressBar>(R.id.progressLoadArticle)
-            if(it == true) {
+            if(it == null) {
                 recViewArticle?.visibility = View.GONE
                 progressLoadArticle?.visibility = View.VISIBLE
             } else {
