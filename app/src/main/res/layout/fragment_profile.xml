@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtProfile"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@drawable/pp" />
 
         <TextView
             android:id="@+id/txtProfile"
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="PROFILE"
+            android:textColor="#167ACA"
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +40,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="50dp"
             android:text="Username :"
+            android:textColor="#041625"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Password :"
+            android:textColor="#041625"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/txtU"
@@ -93,6 +96,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="#FA6464"
+            android:text="Logout"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

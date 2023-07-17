@@ -40,7 +40,6 @@ class DrugListFragment : Fragment() {
         recViewDrug?.layoutManager = LinearLayoutManager(context)
         recViewDrug?.adapter = drugListAdapter
 
-
         observeViewModel()
     }
 
