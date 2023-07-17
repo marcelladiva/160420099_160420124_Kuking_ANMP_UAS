@@ -42,18 +42,6 @@ class DrugListFragment : Fragment() {
 
 
         observeViewModel()
-
-        val refreshLayoutDrug = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutDrug)
-        val txtErrorDrug = view.findViewById<TextView>(R.id.txtErrorDrug)
-        val progressLoadDrug = view.findViewById<ProgressBar>(R.id.progressLoadDrug)
-
-        refreshLayoutDrug?.setOnRefreshListener {
-            recViewDrug?.visibility = View.GONE
-            txtErrorDrug?.visibility = View.GONE
-            progressLoadDrug?.visibility = View.VISIBLE
-            viewModel.refresh()
-            refreshLayoutDrug?.isRefreshing = false
-        }
     }
 
     fun observeViewModel(){

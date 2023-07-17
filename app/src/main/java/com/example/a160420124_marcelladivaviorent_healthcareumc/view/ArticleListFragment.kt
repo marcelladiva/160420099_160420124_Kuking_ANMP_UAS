@@ -41,18 +41,6 @@ class ArticleListFragment : Fragment() {
         recViewArticle?.adapter = articleListAdapter
 
         observeViewModel()
-
-//        val refreshLayoutArticle = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutArticle)
-//        val txtErrorArticle = view?.findViewById<TextView>(R.id.txtErrorArticle)
-//        val progressLoadArticle = view?.findViewById<ProgressBar>(R.id.progressLoadArticle)
-//
-//        refreshLayoutArticle?.setOnRefreshListener {
-//            recViewArticle?.visibility = View.GONE
-//            txtErrorArticle?.visibility = View.GONE
-//            progressLoadArticle?.visibility = View.VISIBLE
-//            viewModel.refresh()
-//            refreshLayoutArticle?.isRefreshing = false
-//        }
     }
 
     fun observeViewModel(){

@@ -10,8 +10,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.a160420124_marcelladivaviorent_healthcareumc.R
+import com.example.a160420124_marcelladivaviorent_healthcareumc.databinding.FragmentArticleDetailBinding
+import com.example.a160420124_marcelladivaviorent_healthcareumc.databinding.FragmentDoctorPracticeScheduleBinding
 import com.example.a160420124_marcelladivaviorent_healthcareumc.util.loadImage
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.ArticleDetailViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,13 +24,14 @@ import java.util.concurrent.TimeUnit
 
 class ArticleDetailFragment : Fragment() {
     private lateinit var articleDetailViewModel: ArticleDetailViewModel
+    private lateinit var dataBinding: FragmentArticleDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_article_detail, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentArticleDetailBinding>(inflater,R.layout.fragment_article_detail, container,false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,16 +42,11 @@ class ArticleDetailFragment : Fragment() {
             articleDetailViewModel = ViewModelProvider(this).get(ArticleDetailViewModel::class.java)
             articleDetailViewModel.fetch(idArticle.toInt())
         }
-
-        val textJudulArtikel = view.findViewById<TextView>(R.id.textJudulArtikel)
-        val imageViewArtikel = view.findViewById<ImageView>(R.id.imageViewArtikel)
-        val textDetailArtikel = view.findViewById<TextView>(R.id.textDetailArtikel)
-        val progressLoadArtikel = view.findViewById<ProgressBar>(R.id.progressLoadArtikel)
-
-        articleDetailViewModel.articleLD.observe(viewLifecycleOwner){articleDetail ->
-            imageViewArtikel.loadImage(articleDetail.photoUrl,progressLoadArtikel)
-            textJudulArtikel.setText(articleDetail.name.toString())
-            textDetailArtikel.setText(articleDetail.detail.toString())
-        }
+        observeViewModel()
+    }
+    fun observeViewModel() {
+        articleDetailViewModel.articleLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.article = it
+        })
     }
 }

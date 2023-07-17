@@ -1,81 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
+    <data>
+        <variable name="article" type="com.example.a160420124_marcelladivaviorent_healthcareumc.model.Article"/>
+        <variable name="listener" type="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ArticleItemLayoutInterface" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageViewArticle"
-                android:layout_width="375dp"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ProgressBar
-                android:id="@+id/progressBarArticle"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewArticle"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewArticle"
-                app:layout_constraintStart_toStartOf="@+id/imageViewArticle"
-                app:layout_constraintTop_toTopOf="@+id/imageViewArticle" />
+                <ImageView
+                    android:id="@+id/imageViewArticle"
+                    android:layout_width="375dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:photoUrl="@{article.photoUrl}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <TextView
-                android:id="@+id/textArticleID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="ID"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewArticle" />
+                <ProgressBar
+                    android:id="@+id/progressBarArticle"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewArticle"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewArticle"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewArticle"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewArticle" />
 
-            <TextView
-                android:id="@+id/textArticleName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="ARTICLE NAME"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textArticleID"
-                app:layout_constraintTop_toBottomOf="@+id/textArticleID" />
+                <TextView
+                    android:id="@+id/textArticleID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@{article.id}"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewArticle" />
 
-            <Button
-                android:id="@+id/btnDetailArticle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="15dp"
-                android:text="READ MORE"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textArticleName" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textArticleName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@{article.name}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textArticleID"
+                    app:layout_constraintTop_toBottomOf="@+id/textArticleID" />
 
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/btnDetailArticle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="READ MORE"
+                    android:tag="@{article.uuid}"
+                    android:onClick="@{listener::onButtonClick}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textArticleName" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

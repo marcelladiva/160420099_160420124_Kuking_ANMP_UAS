@@ -1,126 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.DoctorPracticeScheduleFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable name="doctor" type="com.example.a160420124_marcelladivaviorent_healthcareumc.model.Doctor"/>
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D4F1F4">
+        tools:context=".view.DoctorPracticeScheduleFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D4F1F4">
 
 
-        <ImageView
-            android:id="@+id/imageViewDokter"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            <ImageView
+                android:id="@+id/imageViewDokter"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="30dp"
+                app:photoUrl="@{doctor.photoUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-        <ProgressBar
-            android:id="@+id/progressLoadDokter"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewDokter"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewDokter"
-            app:layout_constraintStart_toStartOf="@+id/imageViewDokter"
-            app:layout_constraintTop_toTopOf="@+id/imageViewDokter" />
+            <ProgressBar
+                android:id="@+id/progressLoadDokter"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewDokter"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewDokter"
+                app:layout_constraintStart_toStartOf="@+id/imageViewDokter"
+                app:layout_constraintTop_toTopOf="@+id/imageViewDokter" />
 
-        <TextView
-            android:id="@+id/textNamaDokter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="NAMA DOKTER"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewDokter" />
+            <TextView
+                android:id="@+id/textNamaDokter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{doctor.name}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewDokter" />
 
-        <TextView
-            android:id="@+id/textDetailDokter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:text="Dr.Nama merupakan dokter spesialis bedah ..."
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNamaDokter" />
+            <TextView
+                android:id="@+id/textDetailDokter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:text="@{doctor.detail}"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textNamaDokter" />
 
-        <TextView
-            android:id="@+id/textJadwalPraktek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:text="Jadwal Praktek :"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textDetailDokter" />
+            <TextView
+                android:id="@+id/textJadwalPraktek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Jadwal Praktek :"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textDetailDokter" />
 
-        <TextView
-            android:id="@+id/textHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:text="Hari :"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textJadwalPraktek" />
+            <TextView
+                android:id="@+id/textHr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:text="Hari :"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textJadwalPraktek" />
 
-        <TextView
-            android:id="@+id/textHariPraktek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Selasa dan Kamis"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/textHr"
-            app:layout_constraintTop_toTopOf="@+id/textHr" />
+            <TextView
+                android:id="@+id/textHariPraktek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@{doctor.hari}"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/textHr"
+                app:layout_constraintTop_toTopOf="@+id/textHr" />
 
-        <TextView
-            android:id="@+id/textJm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:text="Jam :"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textHr" />
+            <TextView
+                android:id="@+id/textJm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:text="Jam :"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textHr" />
 
-        <TextView
-            android:id="@+id/textJamPraktek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="13.00-15.00"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/textJm"
-            app:layout_constraintTop_toTopOf="@+id/textJm" />
+            <TextView
+                android:id="@+id/textJamPraktek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@{doctor.jam}"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/textJm"
+                app:layout_constraintTop_toTopOf="@+id/textJm" />
 
-        <Button
-            android:id="@+id/btnSchedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="SCHEDULE AN APPOINTMENT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textJamPraktek" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <Button
+                android:id="@+id/btnSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="SCHEDULE AN APPOINTMENT"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textJamPraktek" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

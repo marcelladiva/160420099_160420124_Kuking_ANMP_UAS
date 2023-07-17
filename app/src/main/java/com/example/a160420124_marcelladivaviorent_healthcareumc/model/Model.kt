@@ -17,6 +17,7 @@ data class Doctor(
     var uuid:Int =0
 }
 
+
 data class Booking(
     val id:String?,
     val userId:String?,
@@ -41,8 +42,7 @@ data class Article(
 data class User(
     val id:String?,
     val username:String?,
-    val password:String?,
-    val photoUrl:String?){
+    val password:String?){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
 }

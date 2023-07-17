@@ -7,6 +7,7 @@ import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -19,7 +20,7 @@ val DB_NAME = "umcdb"
 
 fun buildDb(context: Context):UMCDatabase {
     val db = Room.databaseBuilder(context, UMCDatabase::class.java, DB_NAME).addMigrations(
-        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4).build()
+        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5).build()
     return db
 }
 
@@ -44,18 +45,17 @@ val MIGRATION_3_4 = object : Migration(3, 4) {
     }
 }
 
-fun ImageView.loadImage(url: String?, progressBar:ProgressBar) {
+val MIGRATION_4_5 = object : Migration(4, 5) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE user ('id' TEXT, 'username' TEXT, 'password' TEXT, 'uuid' INTEGER NOT NULL, PRIMARY KEY('uuid'))")
+    }
+}
 
-    Picasso.get()
-        .load(url).resize(400, 400).centerCrop()
-        .error(R.drawable.baseline_error_24)
-        .into(this, object:Callback {
-            override fun onSuccess() {
-                progressBar.visibility = View.GONE
-            }
-            override fun onError(e: Exception?) {
-            }
-        })
+@BindingAdapter("photoUrl")
+fun loadImage(view: View, photoUrl: String?) {
+    val image: ImageView = view as ImageView
+    Picasso.get().load(photoUrl).into(view)
 }
 
 fun createNotificationChannel(context: Context, importance: Int, showBadge: Boolean, name: String, description: String) {
