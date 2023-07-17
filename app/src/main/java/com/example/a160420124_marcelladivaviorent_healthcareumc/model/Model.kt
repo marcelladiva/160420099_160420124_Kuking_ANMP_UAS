@@ -17,14 +17,15 @@ data class Doctor(
     var uuid:Int =0
 }
 
-data class Drug(
+data class Booking(
     val id:String?,
-    val name:String?,
-    val photoUrl:String?,
-    val detail:String?,
-    val dosis:String?,
-    val harga:String?,
-    )
+    val userId:String?,
+    val doctorId:String?,
+    val hari:String?,
+    val jam:String?){
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+}
 
 @Entity
 data class Article(
@@ -36,15 +37,36 @@ data class Article(
     var uuid:Int =0
 }
 
-data class Event(
+@Entity
+data class User(
+    val id:String?,
+    val username:String?,
+    val password:String?,
+    val photoUrl:String?){
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+}
+
+@Entity
+data class Facility(
+    val id:String?,
+    val name:String?,
+    val photoUrl:String?,
+    val description:String?){
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+}
+@Entity
+data class Drug(
     val id:String?,
     val name:String?,
     val photoUrl:String?,
     val detail:String?,
-    val hari:String?,
-    val pukul:String?,
-    val biaya:String?,
-)
+    val dosis:String?,
+    val harga:String?) {
+    @PrimaryKey(autoGenerate = true)
+    var uuid: Int = 0
+}
 
 
 

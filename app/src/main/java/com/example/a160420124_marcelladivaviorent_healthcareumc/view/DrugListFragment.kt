@@ -64,7 +64,7 @@ class DrugListFragment : Fragment() {
 
         viewModel.drugLoadErrorLD.observe(viewLifecycleOwner, Observer {
             val txtErrorDrug = view?.findViewById<TextView>(R.id.txtErrorDrug)
-            if(it == true) {
+            if(it == null) {
                 txtErrorDrug?.visibility = View.VISIBLE
             } else {
                 txtErrorDrug?.visibility = View.GONE
@@ -74,7 +74,7 @@ class DrugListFragment : Fragment() {
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             val recViewDrug = view?.findViewById<RecyclerView>(R.id.recViewDrug)
             val progressLoadDrug = view?.findViewById<ProgressBar>(R.id.progressLoadDrug)
-            if(it == true) {
+            if(it == null) {
                 recViewDrug?.visibility = View.GONE
                 progressLoadDrug?.visibility = View.VISIBLE
             } else {

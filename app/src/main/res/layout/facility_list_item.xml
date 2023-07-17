@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="291dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageViewEvent"
+                android:id="@+id/imgFacility"
                 android:layout_width="375dp"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
@@ -33,48 +33,52 @@
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <ProgressBar
-                android:id="@+id/progressBarEvent"
+                android:id="@+id/progressBarFacility"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewEvent"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewEvent"
-                app:layout_constraintStart_toStartOf="@+id/imageViewEvent"
-                app:layout_constraintTop_toTopOf="@+id/imageViewEvent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/imgFacility"
+                app:layout_constraintEnd_toEndOf="@id/imgFacility"
+                app:layout_constraintStart_toStartOf="@id/imgFacility"
+                app:layout_constraintTop_toTopOf="@id/imgFacility" />
 
             <TextView
-                android:id="@+id/textEventID"
-                android:layout_width="20dp"
-                android:layout_height="22dp"
+                android:id="@+id/txtIdFacility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="ID"
+                android:layout_marginTop="20dp"
+                android:text="1"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewEvent" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/imgFacility"
+                app:layout_constraintTop_toBottomOf="@+id/imgFacility" />
 
             <TextView
-                android:id="@+id/textEventName"
+                android:id="@+id/txtNameFac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="EVENT NAME"
-                android:textSize="20sp"
+                android:text="Facility Name"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textEventID"
-                app:layout_constraintTop_toBottomOf="@+id/textEventID" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtIdFacility" />
 
-            <Button
-                android:id="@+id/btnEventDetail"
+            <TextView
+                android:id="@+id/txtDescFacility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="15dp"
-                android:text="DETAIL EVENT"
+                android:layout_marginBottom="20dp"
+                android:text="Facility Description"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textEventName" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameFac" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="195dp"
+            android:layout_height="196dp"
+            android:layout_marginTop="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtProfile"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txtProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="PROFILE"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="50dp"
+            android:text="Username :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+        <TextView
+            android:id="@+id/txtP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Password :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/txtU"
+            app:layout_constraintTop_toBottomOf="@+id/txtU" />
+
+        <EditText
+            android:id="@+id/editUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="#D4E9FA"
+            android:ems="10"
+            android:hint="  Edit Username"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/txtU"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtU"
+            app:layout_constraintTop_toTopOf="@+id/txtU" />
+
+        <EditText
+            android:id="@+id/editPassProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="#D4E9FA"
+            android:ems="10"
+            android:hint="  Edit Password"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/txtP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtP"
+            app:layout_constraintTop_toTopOf="@+id/txtP" />
+
+        <Button
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:background="#9DD55D"
+            android:text="Save"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

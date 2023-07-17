@@ -14,7 +14,7 @@ import com.example.a160420124_marcelladivaviorent_healthcareumc.R
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Doctor
 import com.example.a160420124_marcelladivaviorent_healthcareumc.util.loadImage
 
-class DoctorListAdapter(val doctorList:ArrayList<Doctor>):RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>() {
+    class DoctorListAdapter(val doctorList:ArrayList<Doctor>):RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>() {
     class DoctorViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorViewHolder {

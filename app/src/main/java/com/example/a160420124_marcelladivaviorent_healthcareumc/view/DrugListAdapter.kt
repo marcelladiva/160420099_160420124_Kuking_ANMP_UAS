@@ -46,7 +46,7 @@ class DrugListAdapter(val drugList:ArrayList<Drug>):RecyclerView.Adapter<DrugLis
         imageViewDrug.loadImage(drugList[position].photoUrl, progressBarDrug)
     }
 
-    fun updateDrugList(newDrugList: ArrayList<Drug>) {
+    fun updateDrugList(newDrugList: List<Drug>) {
         drugList.clear()
         drugList.addAll(newDrugList)
         notifyDataSetChanged()

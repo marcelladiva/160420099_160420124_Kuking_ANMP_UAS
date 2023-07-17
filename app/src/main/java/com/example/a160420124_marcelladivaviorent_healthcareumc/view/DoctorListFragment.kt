@@ -41,18 +41,6 @@ class DoctorListFragment : Fragment() {
         recViewDoctor?.adapter = doctorListAdapter
 
         observeViewModel()
-
-//        val refreshLayoutDoctor = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutDoctor)
-//        val txtErrorDoctor = view?.findViewById<TextView>(R.id.txtErrorDoctor)
-//        val progressLoadDoctor = view?.findViewById<ProgressBar>(R.id.progressLoadDoctor)
-//
-//        refreshLayoutDoctor?.setOnRefreshListener {
-//            recViewDoctor?.visibility = View.GONE
-//            txtErrorDoctor?.visibility = View.GONE
-//            progressLoadDoctor?.visibility = View.VISIBLE
-//            viewModel.refresh()
-//            refreshLayoutDoctor?.isRefreshing = false
-//        }
     }
 
     fun observeViewModel(){

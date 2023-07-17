@@ -32,7 +32,7 @@ class DrugDetailFragment : Fragment() {
         if(arguments != null) {
             val idDrug = DrugDetailFragmentArgs.fromBundle(requireArguments()).drugID
             drugDetailViewModel = ViewModelProvider(this).get(DrugDetailViewModel::class.java)
-            drugDetailViewModel.fetch(idDrug)
+            drugDetailViewModel.fetch(idDrug.toInt())
         }
 
         val imageViewObat = view.findViewById<ImageView>(R.id.imageViewObat)
