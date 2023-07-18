@@ -11,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Article
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.Doctor
+import com.example.a160420124_marcelladivaviorent_healthcareumc.model.History
 import com.example.a160420124_marcelladivaviorent_healthcareumc.model.UMCDatabase
 import com.example.a160420124_marcelladivaviorent_healthcareumc.util.buildDb
 import com.google.gson.Gson
@@ -32,6 +33,12 @@ class DoctorDetailViewModel(application: Application): AndroidViewModel(applicat
             val db = buildDb(getApplication())
 
             doctorLD.postValue(db.doctorDao().selectDoctor(uuid))
+        }
+    }
+    fun addHistory(history: History) {
+        launch {
+            val db = buildDb(getApplication())
+            db.historyDao().insertAll(history)
         }
     }
 }

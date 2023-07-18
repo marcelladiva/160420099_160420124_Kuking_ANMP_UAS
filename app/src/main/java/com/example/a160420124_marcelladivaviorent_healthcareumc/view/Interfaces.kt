@@ -15,3 +15,7 @@ interface ArticleItemLayoutInterface {
 interface DrugItemLayoutInterface {
     fun onButtonClick(v: View)
 }
+
+interface HistoryItemLayoutInterface {
+    fun onButtonClick(v: View)
+}

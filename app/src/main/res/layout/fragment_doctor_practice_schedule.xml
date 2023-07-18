@@ -5,6 +5,7 @@
 
     <data>
         <variable name="doctor" type="com.example.a160420124_marcelladivaviorent_healthcareumc.model.Doctor"/>
+        <variable name="listener" type="com.example.a160420124_marcelladivaviorent_healthcareumc.view.HistoryItemLayoutInterface" />
     </data>
 
     <FrameLayout
@@ -126,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="SCHEDULE AN APPOINTMENT"
+                android:onClick="@{listener::onButtonClick}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textJamPraktek" />

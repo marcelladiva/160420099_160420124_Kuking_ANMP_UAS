@@ -1,6 +1,7 @@
 package com.example.a160420124_marcelladivaviorent_healthcareumc.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +10,19 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.a160420124_marcelladivaviorent_healthcareumc.R
 import com.example.a160420124_marcelladivaviorent_healthcareumc.databinding.FragmentDoctorPracticeScheduleBinding
+import com.example.a160420124_marcelladivaviorent_healthcareumc.model.History
 import com.example.a160420124_marcelladivaviorent_healthcareumc.util.loadImage
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.ArticleDetailViewModel
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.DoctorDetailViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class DoctorPracticeScheduleFragment : Fragment() {
+class DoctorPracticeScheduleFragment : Fragment(), HistoryItemLayoutInterface {
     private lateinit var doctorDetailViewModel: DoctorDetailViewModel
     private lateinit var dataBinding: FragmentDoctorPracticeScheduleBinding
 
@@ -40,6 +43,7 @@ class DoctorPracticeScheduleFragment : Fragment() {
             doctorDetailViewModel.fetch(idDoctor.toInt())
         }
         observeViewModel()
+        dataBinding.listener = this
 
 //        val imageViewDokter = view.findViewById<ImageView>(R.id.imageViewDokter)
 //        val textNamaDokter = view.findViewById<TextView>(R.id.textNamaDokter)
@@ -75,5 +79,11 @@ class DoctorPracticeScheduleFragment : Fragment() {
         doctorDetailViewModel.doctorLD.observe(viewLifecycleOwner, Observer {
             dataBinding.doctor = it
         })
+    }
+
+    override fun onButtonClick(v: View) {
+        var history = History("1",dataBinding.doctor!!.name.toString(),dataBinding.doctor!!.hari.toString(),dataBinding.doctor!!.jam.toString())
+        doctorDetailViewModel.addHistory(history)
+        Toast.makeText(v.context, "Scheduled Appointment success", Toast.LENGTH_LONG).show()
     }
 }

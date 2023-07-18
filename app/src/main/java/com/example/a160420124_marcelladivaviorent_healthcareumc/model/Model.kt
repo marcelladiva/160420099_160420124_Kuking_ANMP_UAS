@@ -17,11 +17,10 @@ data class Doctor(
     var uuid:Int =0
 }
 
-
-data class Booking(
-    val id:String?,
+@Entity
+data class History(
     val userId:String?,
-    val doctorId:String?,
+    val doctorName:String?,
     val hari:String?,
     val jam:String?){
     @PrimaryKey(autoGenerate = true)

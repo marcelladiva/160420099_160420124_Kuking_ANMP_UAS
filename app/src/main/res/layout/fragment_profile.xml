@@ -10,47 +10,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="195dp"
-            android:layout_height="196dp"
-            android:layout_marginTop="35dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtProfile"
-            tools:src="@drawable/pp" />
-
-        <TextView
-            android:id="@+id/txtProfile"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="PROFILE"
-            android:textColor="#167ACA"
-            android:textSize="30dp"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/editUserProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/pp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/txtU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="240dp"
             android:text="Username :"
             android:textColor="#041625"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:text="Password :"
             android:textColor="#041625"
             android:textSize="20sp"
@@ -62,6 +67,7 @@
             android:id="@+id/editUserProfile"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
             android:background="#D4E9FA"
             android:ems="10"
             android:hint="  Edit Username"
@@ -75,6 +81,7 @@
             android:id="@+id/editPassProfile"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
             android:background="#D4E9FA"
             android:ems="10"
             android:hint="  Edit Password"
@@ -88,27 +95,38 @@
             android:id="@+id/btnSaveProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
             android:background="#9DD55D"
             android:text="Save"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPassProfile" />
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="#F8EBA4"
+            android:text="History Booking"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+            app:layout_constraintTop_toTopOf="@+id/btnSaveProfile" />
 
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="80dp"
             android:background="#FA6464"
             android:text="Logout"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnHistory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

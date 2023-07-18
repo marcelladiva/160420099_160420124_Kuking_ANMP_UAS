@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/itemDoctor"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DoctorListFragment"
-        android:label="fragment_doctor_list"
-        tools:layout="@layout/fragment_doctor_list" >
+        android:label="Doctor List"
+        tools:layout="@layout/fragment_doctor_list">
         <action
             android:id="@+id/actionDoctorDetail"
             app:destination="@id/doctorPracticeScheduleFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/doctorPracticeScheduleFragment"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DoctorPracticeScheduleFragment"
-        android:label="fragment_doctor_practice_schedule"
-        tools:layout="@layout/fragment_doctor_practice_schedule" >
+        android:label="Doctor Schedule"
+        tools:layout="@layout/fragment_doctor_practice_schedule">
         <argument
             android:name="doctorID"
             app:argType="string" />
@@ -26,8 +26,8 @@
     <fragment
         android:id="@+id/itemArticle"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ArticleListFragment"
-        android:label="fragment_article_list"
-        tools:layout="@layout/fragment_article_list" >
+        android:label="Article List"
+        tools:layout="@layout/fragment_article_list">
         <action
             android:id="@+id/actionArticleDetail"
             app:destination="@id/articleDetailFragment" />
@@ -35,8 +35,8 @@
     <fragment
         android:id="@+id/articleDetailFragment"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ArticleDetailFragment"
-        android:label="fragment_article_detail"
-        tools:layout="@layout/fragment_article_detail" >
+        android:label="Article Detail"
+        tools:layout="@layout/fragment_article_detail">
         <argument
             android:name="articleID"
             app:argType="string" />
@@ -44,8 +44,8 @@
     <fragment
         android:id="@+id/itemDrug"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DrugListFragment"
-        android:label="fragment_drug_list"
-        tools:layout="@layout/fragment_drug_list" >
+        android:label="Drug List"
+        tools:layout="@layout/fragment_drug_list">
         <action
             android:id="@+id/actionDrugDetail"
             app:destination="@id/drugDetailFragment" />
@@ -53,8 +53,8 @@
     <fragment
         android:id="@+id/drugDetailFragment"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.DrugDetailFragment"
-        android:label="fragment_drug_detail"
-        tools:layout="@layout/fragment_drug_detail" >
+        android:label="Drug Detail"
+        tools:layout="@layout/fragment_drug_detail">
         <argument
             android:name="drugID"
             app:argType="string" />
@@ -62,11 +62,20 @@
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/actionHistoryfFragment"
+            app:destination="@id/itemHistory" />
+    </fragment>
     <fragment
         android:id="@+id/itemFacility"
         android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.FacilityListFragment"
-        android:label="fragment_facility_list"
+        android:label="Facility List"
         tools:layout="@layout/fragment_facility_list" />
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.example.a160420124_marcelladivaviorent_healthcareumc.view.HistoryListFragment"
+        android:label="History List"
+        tools:layout="@layout/fragment_history_list" />
 </navigation>
