@@ -39,16 +39,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-                <ProgressBar
-                    android:id="@+id/progressBarFacility"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/imgFacility"
-                    app:layout_constraintEnd_toEndOf="@id/imgFacility"
-                    app:layout_constraintStart_toStartOf="@id/imgFacility"
-                    app:layout_constraintTop_toTopOf="@id/imgFacility" />
-
                 <TextView
                     android:id="@+id/txtIdFacility"
                     android:layout_width="wrap_content"

@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
 
-    lateinit var bottomNav: BottomNavigationView
 
     init {
         instance = this

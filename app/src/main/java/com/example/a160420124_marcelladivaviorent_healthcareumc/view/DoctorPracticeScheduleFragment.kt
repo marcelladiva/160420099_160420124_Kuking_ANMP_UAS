@@ -12,6 +12,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.a160420124_marcelladivaviorent_healthcareumc.R
@@ -20,9 +21,14 @@ import com.example.a160420124_marcelladivaviorent_healthcareumc.model.History
 import com.example.a160420124_marcelladivaviorent_healthcareumc.util.loadImage
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.ArticleDetailViewModel
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.DoctorDetailViewModel
+import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.LoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class DoctorPracticeScheduleFragment : Fragment(), HistoryItemLayoutInterface {
+    private lateinit var loginViewModel: LoginViewModel
     private lateinit var doctorDetailViewModel: DoctorDetailViewModel
     private lateinit var dataBinding: FragmentDoctorPracticeScheduleBinding
 
@@ -82,7 +88,8 @@ class DoctorPracticeScheduleFragment : Fragment(), HistoryItemLayoutInterface {
     }
 
     override fun onButtonClick(v: View) {
-        var history = History("1",dataBinding.doctor!!.name.toString(),dataBinding.doctor!!.hari.toString(),dataBinding.doctor!!.jam.toString())
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        var history = History(loginViewModel.sharedPrefProvider.getUUID().toString(),dataBinding.doctor!!.name.toString(),dataBinding.doctor!!.hari.toString(),dataBinding.doctor!!.jam.toString())
         doctorDetailViewModel.addHistory(history)
         Toast.makeText(v.context, "Scheduled Appointment success", Toast.LENGTH_LONG).show()
     }

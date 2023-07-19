@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.a160420124_marcelladivaviorent_healthcareumc.R
 import com.example.a160420124_marcelladivaviorent_healthcareumc.databinding.FragmentSignUpBinding
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.LoginViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SignUpFragment : Fragment(), SignUpLayoutInterface {
     private lateinit var loginViewModel: LoginViewModel
@@ -21,6 +24,11 @@ class SignUpFragment : Fragment(), SignUpLayoutInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.let {
+            it.findViewById<BottomNavigationView>(R.id.bottomNav).visibility = View.GONE
+            it.findViewById<DrawerLayout>(R.id.drawerLayout).setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            it.findViewById<Toolbar>(androidx.appcompat.R.id.action_bar).navigationIcon = null
+        }
         // Inflate the layout for this fragment
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container,false)
         return dataBinding.root

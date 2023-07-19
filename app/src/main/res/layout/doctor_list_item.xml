@@ -41,16 +41,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <ProgressBar
-                    android:id="@+id/progressBarDoctor"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewDoctor"
-                    app:layout_constraintEnd_toEndOf="@+id/imageViewDoctor"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewDoctor" />
-
                 <TextView
                     android:id="@+id/textDoctorID"
                     android:layout_width="wrap_content"
@@ -80,9 +70,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="15dp"
-                    android:text="PRACTICE SCHEDULE"
-                    android:tag="@{doctor.uuid}"
+                    android:background="#A1DBF6"
                     android:onClick="@{listener::onButtonClick}"
+                    android:tag="@{doctor.uuid}"
+                    android:text="PRACTICE SCHEDULE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textDoctorName" />

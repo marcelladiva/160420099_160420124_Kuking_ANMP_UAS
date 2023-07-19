@@ -29,16 +29,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
 
-            <ProgressBar
-                android:id="@+id/progressLoadObat"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewObat"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewObat"
-                app:layout_constraintStart_toStartOf="@+id/imageViewObat"
-                app:layout_constraintTop_toTopOf="@+id/imageViewObat" />
-
             <TextView
                 android:id="@+id/textNamaObat"
                 android:layout_width="wrap_content"
@@ -122,6 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:background="#A1DBF6"
                 android:text="ADD TO CART"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/itemArticle">
 
     <fragment
         android:id="@+id/itemDoctor"
@@ -68,7 +68,7 @@
             android:id="@+id/actionHistoryfFragment"
             app:destination="@id/itemHistory" />
         <action
-            android:id="@+id/actionProfileLoginFragment"
+            android:id="@+id/actionProfLoginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment

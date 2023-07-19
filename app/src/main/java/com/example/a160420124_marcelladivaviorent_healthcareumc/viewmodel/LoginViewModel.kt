@@ -79,4 +79,10 @@ class LoginViewModel(application: Application): AndroidViewModel(application), C
             }
         }
     }
+    fun profile(uuid: Int) {
+        launch {
+            val db = buildDb(getApplication())
+            userLD.postValue(db.userDao().selectUser(uuid))
+        }
+    }
 }

@@ -47,7 +47,7 @@ class LoginFragment : Fragment(), LoginLayoutInterface, SignUpLayoutInterface {
     private fun observeViewModel(view: View) {
         loginViewModel.userLD.observe(viewLifecycleOwner) {
             if (it != null) {
-                loginViewModel.sessionLogin(it.username, it.uuid)
+                loginViewModel.sessionLogin(it.username!!, it.uuid)
                 val action = LoginFragmentDirections.actionArticleFragment()
                 Navigation.findNavController(view).navigate(action)
             } else {

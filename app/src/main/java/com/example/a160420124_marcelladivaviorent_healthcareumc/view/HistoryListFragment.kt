@@ -15,9 +15,10 @@ import com.example.a160420124_marcelladivaviorent_healthcareumc.R
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.DoctorListViewModel
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.FacilityListViewModel
 import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.HistoryListViewModel
+import com.example.a160420124_marcelladivaviorent_healthcareumc.viewmodel.LoginViewModel
 
 class HistoryListFragment : Fragment() {
-
+    private lateinit var loginViewModel: LoginViewModel
     private lateinit var viewModel: HistoryListViewModel
     private val historyListAdapter = HistoryListAdapter(arrayListOf())
 
@@ -31,9 +32,10 @@ class HistoryListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         viewModel = ViewModelProvider(this).get(HistoryListViewModel::class.java)
-        viewModel.refresh(1)
+        viewModel.refresh(loginViewModel.sharedPrefProvider.getUUID())
 
         val recViewHistory = view?.findViewById<RecyclerView>(R.id.recViewHistory)
         recViewHistory?.layoutManager = LinearLayoutManager(context)

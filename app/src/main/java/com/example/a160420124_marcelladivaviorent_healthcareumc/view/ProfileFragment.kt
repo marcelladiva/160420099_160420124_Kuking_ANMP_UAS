@@ -31,7 +31,7 @@ class ProfileFragment : Fragment(), ProfileLayoutInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        loginViewModel.getUserFromSharedPref()
+        loginViewModel.profile(loginViewModel.sharedPrefProvider.getUUID())
         observeViewModel(view)
         dataBinding.profileInterface = this
     }
@@ -39,7 +39,7 @@ class ProfileFragment : Fragment(), ProfileLayoutInterface {
     private fun observeViewModel(view: View) {
         loginViewModel.userLD.observe(viewLifecycleOwner) {
             if (it == null) {
-                val action = ProfileFragmentDirections.actionProfileLoginFragment()
+                val action = ProfileFragmentDirections.actionProfLoginFragment()
                 Navigation.findNavController(view).navigate(action)
             } else {
                 dataBinding.user = it
