@@ -1,132 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ProfileFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="user"
+            type="com.example.a160420124_marcelladivaviorent_healthcareumc.model.User" />
+        <variable
+            name="profileInterface"
+            type="com.example.a160420124_marcelladivaviorent_healthcareumc.view.ProfileLayoutInterface" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.ProfileFragment">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/editUserProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/editUserProfile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/imgProfile"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/pp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtU"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="240dp"
-            android:text="Username :"
-            android:textColor="#041625"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/pp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/txtP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Password :"
-            android:textColor="#041625"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/txtU"
-            app:layout_constraintTop_toBottomOf="@+id/txtU" />
+            <TextView
+                android:id="@+id/txtU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="240dp"
+                android:text="Username :"
+                android:textColor="#041625"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editUserProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:background="#D4E9FA"
-            android:ems="10"
-            android:hint="  Edit Username"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/txtU"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtU"
-            app:layout_constraintTop_toTopOf="@+id/txtU" />
+            <TextView
+                android:id="@+id/txtP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Password :"
+                android:textColor="#041625"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtU"
+                app:layout_constraintTop_toBottomOf="@+id/txtU" />
 
-        <EditText
-            android:id="@+id/editPassProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:background="#D4E9FA"
-            android:ems="10"
-            android:hint="  Edit Password"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/txtP"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtP"
-            app:layout_constraintTop_toTopOf="@+id/txtP" />
+            <EditText
+                android:id="@+id/editUserProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="#D4E9FA"
+                android:ems="10"
+                android:hint="  Edit Username"
+                android:text="@{user.username}"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="@+id/txtU"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtU"
+                app:layout_constraintTop_toTopOf="@+id/txtU" />
 
-        <Button
-            android:id="@+id/btnSaveProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="#9DD55D"
-            android:text="Save"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editPassProfile" />
+            <EditText
+                android:id="@+id/editPassProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="#D4E9FA"
+                android:ems="10"
+                android:hint="  Edit Password"
+                android:text="@{user.password}"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="@+id/txtP"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtP"
+                app:layout_constraintTop_toTopOf="@+id/txtP" />
 
-        <Button
-            android:id="@+id/btnHistory"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:background="#F8EBA4"
-            android:text="History Booking"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnSaveProfile" />
+            <Button
+                android:id="@+id/btnSaveProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="#9DD55D"
+                android:text="Save"
+                android:onClick="@{profileInterface::ubah}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editPassProfile" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:background="#FA6464"
-            android:text="Logout"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnHistory" />
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:background="#F8EBA4"
+                android:text="History Booking"
+                android:onClick="@{profileInterface::history}"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnSaveProfile" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="#FA6464"
+                android:text="Logout"
+                android:onClick="@{profileInterface::logout}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnHistory" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

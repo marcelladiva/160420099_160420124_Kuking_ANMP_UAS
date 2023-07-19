@@ -1,64 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.SignUpFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="user"
+            type="com.example.a160420124_marcelladivaviorent_healthcareumc.model.User" />
+        <variable
+            name="signupInterface"
+            type="com.example.a160420124_marcelladivaviorent_healthcareumc.view.SignUpLayoutInterface" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.SignUpFragment">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bgumc"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editUser"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="500dp"
-            android:layout_marginEnd="50dp"
-            android:background="#FDC3CE"
-            android:ems="10"
-            android:hint="  Enter Username"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bgumc"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bgumc" />
 
-        <EditText
-            android:id="@+id/editPass"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:background="#FDC3CE"
-            android:ems="10"
-            android:hint="  Enter Password"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/editUser"
-            app:layout_constraintStart_toStartOf="@+id/editUser"
-            app:layout_constraintTop_toBottomOf="@+id/editUser" />
+            <EditText
+                android:id="@+id/editUser"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginEnd="50dp"
+                android:background="#FDC3CE"
+                android:ems="10"
+                android:hint="  Enter Username"
+                android:inputType="textPersonName"
+                android:text="@{user.username}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <Button
-            android:id="@+id/btnSignUp"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#8092F1"
-            android:text="Sign Up"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/editPass"
-            app:layout_constraintStart_toStartOf="@+id/editPass"
-            app:layout_constraintTop_toBottomOf="@+id/editPass" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <EditText
+                android:id="@+id/editPass"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="#FDC3CE"
+                android:ems="10"
+                android:hint="  Enter Password"
+                android:text="@{user.password}"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/editUser"
+                app:layout_constraintStart_toStartOf="@+id/editUser"
+                app:layout_constraintTop_toBottomOf="@+id/editUser" />
+
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#8092F1"
+                android:text="Sign Up"
+                android:onClick="@{signupInterface::daftar}"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/editPass"
+                app:layout_constraintStart_toStartOf="@+id/editPass"
+                app:layout_constraintTop_toBottomOf="@+id/editPass" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

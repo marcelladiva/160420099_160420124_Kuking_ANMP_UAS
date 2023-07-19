@@ -20,7 +20,7 @@ val DB_NAME = "umcdb"
 
 fun buildDb(context: Context):UMCDatabase {
     val db = Room.databaseBuilder(context, UMCDatabase::class.java, DB_NAME).addMigrations(
-        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7).build()
+        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8).build()
     return db
 }
 
@@ -65,6 +65,15 @@ val MIGRATION_6_7 = object : Migration(6, 7) {
             "CREATE TABLE history_ser ('userId' TEXT, 'doctorName' TEXT, 'hari' TEXT, 'jam' TEXT, 'uuid' INTEGER NOT NULL, PRIMARY KEY('uuid'))")
         database.execSQL("DROP TABLE history")
         database.execSQL("ALTER TABLE history_ser RENAME TO history")
+    }
+}
+
+val MIGRATION_7_8 = object : Migration(7, 8) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE user_ser ('username' TEXT, 'password' TEXT, 'uuid' INTEGER NOT NULL, PRIMARY KEY('uuid'))")
+        database.execSQL("DROP TABLE user")
+        database.execSQL("ALTER TABLE user_ser RENAME TO user")
     }
 }
 

@@ -39,9 +39,8 @@ data class Article(
 
 @Entity
 data class User(
-    val id:String?,
-    val username:String?,
-    val password:String?){
+    var username:String,
+    var password:String){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
 }
